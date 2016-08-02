@@ -3,3 +3,5 @@
 /.sass-cache
 ./npm-debug.log
 .DS_Store
+kindle-web.sublime-project
+kindle-web.sublime-workspace
