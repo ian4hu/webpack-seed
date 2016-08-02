@@ -11,6 +11,7 @@ console.info('require page c.');
 
 import 'commonCss'
 import '../scss/c.scss'
+import './lib/bootstrap'
 
 let $ = require('zepto')
 

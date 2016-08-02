@@ -49,6 +49,7 @@ module.exports = (options) => {
     let extractCSS
     let cssLoader
     let sassLoader
+    let lessLoader
 
     // generate entry html files
     // 自动生成入口文件，入口js名必须和入口文件名相同
@@ -93,6 +94,7 @@ module.exports = (options) => {
         extractCSS = new ExtractTextPlugin('css/[name].css?[contenthash]')
         cssLoader = extractCSS.extract('style', ['css'])
         sassLoader = extractCSS.extract('style', ['css', 'sass'])
+        lessLoader = extractCSS.extract('style', ['css', 'less'])
         plugins.push(extractCSS, new webpack.HotModuleReplacementPlugin())
     } else {
         extractCSS = new ExtractTextPlugin('css/[contenthash:8].[name].min.css', {
@@ -104,6 +106,7 @@ module.exports = (options) => {
         })
         cssLoader = extractCSS.extract('style', ['css?minimize'])
         sassLoader = extractCSS.extract('style', ['css?minimize', 'sass'])
+        lessLoader = extractCSS.extract('style', ['css?minimize', 'less'])
 
         plugins.push(
             extractCSS,
@@ -167,7 +170,9 @@ module.exports = (options) => {
                 {test: /\.(tpl|ejs)$/, loader: 'ejs'},
                 {test: /\.css$/, loader: cssLoader},
                 {test: /\.scss$/, loader: sassLoader},
-                {test: /\.jsx?$/, loader: 'babel?presets[]=react,presets[]=es2015'}
+                {test: /\.less$/, loader: lessLoader},
+                {test: /\.jsx?$/, loader: 'babel?presets[]=react,presets[]=es2015'},
+                {test: require.resolve('jquery'), loader: 'expose?jQuery'}
             ]
         },
 
