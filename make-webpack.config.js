@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2015-08-02 14:16:41
 * @Last Modified by:   Ian Hu
-* @Last Modified time: 2016-08-09 22:06:18
+* @Last Modified time: 2016-08-03 22:19:00
 */
 
 'use strict';
@@ -171,7 +171,7 @@ module.exports = (options) => {
                 {test: /\.css$/, loader: cssLoader},
                 {test: /\.scss$/, loader: sassLoader},
                 {test: /\.less$/, loader: lessLoader},
-                {test: /\.jsx?$/, loader: 'babel?presets[]=react,presets[]=es2015'},
+                {test: /\.jsx?$/, loader: 'babel?presets[]=react,presets[]=es2015,presets[]=stage-2,presets[]=stage-0'},
                 {test: require.resolve('jquery'), loader: 'expose?jQuery'}
             ]
         },
