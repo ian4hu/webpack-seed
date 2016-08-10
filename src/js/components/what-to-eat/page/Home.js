@@ -2,7 +2,7 @@
  * @Author: Ian Hu
  * @Date:   2016-08-03 21:36:16
  * @Last Modified by:   Ian Hu
- * @Last Modified time: 2016-08-10 08:42:01
+ * @Last Modified time: 2016-08-10 09:00:37
  */
 
 'use strict';
@@ -36,7 +36,7 @@ export class Home extends React.Component {
                         <p><a href="#">马上解决</a></p>
                     </div>
                 </Jumbotron>
-                  <Grid>
+                  <Grid bsClass="container-flow">
                     <Col md={4} sm={6}>
                       <Panel header="最常纠结">
                         lesadadas
