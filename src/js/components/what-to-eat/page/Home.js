@@ -2,15 +2,17 @@
  * @Author: Ian Hu
  * @Date:   2016-08-03 21:36:16
  * @Last Modified by:   Ian Hu
- * @Last Modified time: 2016-08-10 09:00:37
+ * @Last Modified time: 2016-08-22 01:17:58
  */
 
 'use strict';
 
 import React from 'react';
 import {connect} from 'react-redux';
-import '../../../lib/bootstrap'
-import {Jumbotron, Button, Grid, Panel, Col} from 'react-bootstrap'
+import 'jquery'
+import 'semantic-ui/dist/semantic.css'
+import 'semantic-ui/dist/semantic.js'
+
 
 function mapStateToProps(state) {
     return {};
@@ -26,29 +28,21 @@ export class Home extends React.Component {
     }
 
     render() {
-
+        var style = {
+            paddingLeft: '0',
+            paddingRight: '0'
+        };
         return (
-            <div>
-                <Jumbotron style={{marginBottom: '4px'}}>
-                    <div className="container">
-                        <h1>要吃啥</h1>
-                        <p>每天要吃啥不再是你头疼的问题</p>
-                        <p><a href="#">马上解决</a></p>
-                    </div>
-                </Jumbotron>
-                  <Grid bsClass="container-flow">
-                    <Col md={4} sm={6}>
-                      <Panel header="最常纠结">
-                        lesadadas
-                      </Panel>
-                    </Col>
-                    <Col md={4} sm={6}>
-                      <Panel header="最常纠结">
-                        lesadadas
-                      </Panel>
-                    </Col>
-                  </Grid>
-            </div>
+<div className="ui segment">
+    <h2 className="ui center aligned icon header dash_header">
+        <i className="settings icon"></i>
+        <div className="content">
+            要吃啥
+            <div className="sub header">解决你的选择困难症</div>
+        </div>
+    </h2>
+    <div></div>
+</div>
         );
     }
 }

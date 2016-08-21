@@ -1,8 +1,8 @@
 /*
 * @Author: dmyang
 * @Date:   2015-08-31 21:17:45
-* @Last Modified by:   dmyang
-* @Last Modified time: 2016-03-28 09:48:22
+* @Last Modified by:   Ian Hu
+* @Last Modified time: 2016-08-21 23:49:12
 */
 
 'use strict';
@@ -11,7 +11,6 @@ console.info('require page c.');
 
 import 'commonCss'
 import '../scss/c.scss'
-import './lib/bootstrap'
 
 let $ = require('zepto')
 

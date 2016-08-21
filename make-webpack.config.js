@@ -2,7 +2,7 @@
 * @Author: dmyang
 * @Date:   2015-08-02 14:16:41
 * @Last Modified by:   Ian Hu
-* @Last Modified time: 2016-08-03 22:19:00
+* @Last Modified time: 2016-08-22 01:26:55
 */
 
 'use strict';
@@ -16,6 +16,7 @@ const glob = require('glob')
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const StringReplacePlugin = require("string-replace-webpack-plugin")
 
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin
@@ -50,6 +51,14 @@ module.exports = (options) => {
     let cssLoader
     let sassLoader
     let lessLoader
+    let replaceLoader = StringReplacePlugin.replace({
+        replacements: [{
+            pattern: /fonts\.googleapis\.com\/css/ig,
+            replacement: (match, offset, string) => {
+                return 'fonts.lug.ustc.edu.cn/css'
+            }
+        }]
+    })
 
     // generate entry html files
     // 自动生成入口文件，入口js名必须和入口文件名相同
@@ -83,12 +92,16 @@ module.exports = (options) => {
     // 没有真正引用也会加载到runtime，如果没安装这些模块会导致报错，有点坑
     /*plugins.push(
         new webpack.ProvidePlugin({
-            React: 'react',
-            ReactDOM: 'react-dom',
-            _: 'lodash', 按需引用
-            $: 'jquery'
+            //React: 'react',
+            //ReactDOM: 'react-dom',
+            //_: 'lodash', 按需引用
+            $: 'jquery',
+            jQuery: 'jquery'
         })
     )*/
+
+    // 替换插件
+    plugins.push(new StringReplacePlugin())
 
     if(dev) {
         extractCSS = new ExtractTextPlugin('css/[name].css?[contenthash]')
@@ -172,7 +185,8 @@ module.exports = (options) => {
                 {test: /\.scss$/, loader: sassLoader},
                 {test: /\.less$/, loader: lessLoader},
                 {test: /\.jsx?$/, loader: 'babel?presets[]=react,presets[]=es2015,presets[]=stage-2,presets[]=stage-0'},
-                {test: require.resolve('jquery'), loader: 'expose?jQuery'}
+                {test: require.resolve('jquery'), loader: 'expose?jQuery'},
+                {text: require.resolve('semantic-ui/dist/semantic.css'), loader: replaceLoader}
             ]
         },
 
