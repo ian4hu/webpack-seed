@@ -208,7 +208,7 @@ module.exports = (options) => {
         ].concat(plugins),
 
         devServer: {
-            hot: true,
+            // hot: true,
             noInfo: false,
             inline: true,
             publicPath: publicPath,
