@@ -1,8 +1,8 @@
 /*
 * @Author: dmyang
 * @Date:   2015-08-02 14:16:41
-* @Last Modified by:   dmyang
-* @Last Modified time: 2016-09-22 20:11:17
+* @Last Modified by:   Ian Hu
+* @Last Modified time: 2016-09-28 13:18:38
 */
 
 'use strict';
@@ -167,7 +167,8 @@ module.exports = (options) => {
                 {test: /\.(tpl|ejs)$/, loader: 'ejs'},
                 {test: /\.css$/, loader: cssLoader},
                 {test: /\.scss$/, loader: sassLoader},
-                {test: /\.jsx?$/, loader: 'babel?presets[]=react,presets[]=es2015'}
+                {test: /\.jsx?$/, loader: 'babel?presets[]=react,presets[]=es2015'},
+                {test: require.resolve('jquery'), loader: 'expose?jQuery'}
             ]
         },
 
